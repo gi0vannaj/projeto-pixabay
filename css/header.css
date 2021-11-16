@@ -1,0 +1,21 @@
+header{
+    height: 100px;
+    /* background-color: bisque; */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 40px;
+}
+.logo{
+    height: 40px;
+}
+.logo img{
+    height: 100%;
+
+}
+
+@media (max-width:720px){
+    header{
+        padding: 0 10px;
+    }
+}
