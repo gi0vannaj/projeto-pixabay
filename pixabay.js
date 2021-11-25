@@ -6,10 +6,22 @@ const procurarImagens = async (pesquisa) => {
   const reponse = await fetch(url);
   return reponse.json();
 };
+const criarCard = ({ webformatURL, pageURL }) => {
+  const card = document.createElement("div");
+  card.classList.add("card-container");
+  card.innerHTML = ` 
+    <a href="${pageURL}">
+      <img src='${webformatURL}' class='card-imagem'>
+    </a>
+  `;
+  return card;
+};
 
 const carregarGaleria = async (pesquisa) => {
+  const container = document.querySelector(".galeria-container");
   const { hits } = await procurarImagens(pesquisa);
-  console.log(hits);
+  const cards = hits.map(criarCard);
+  container.replaceChildren(...cards); //... espalha um array
 };
 
 const handleKeypress = ({ key, target }) => {
